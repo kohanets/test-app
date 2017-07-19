@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGOOSE_CONNECT);
 
 
 
-// for cross port acess
+// for cross port access
 app.use(function (req, res, next) {
 
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200')
@@ -37,6 +37,9 @@ app.use(function (req, res, next) {
 });
 
 app.use(express.static(path.resolve(__dirname, 'client/dist')));
+app.use('/home/*', function (req,res) {
+    res.sendFile(path.resolve('client/dist/index.html'));
+})
 app.use('/files',express.static(path.resolve(__dirname, 'uploads')));
 
 app.use(bodyParser.urlencoded({ extended: true }));

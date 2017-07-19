@@ -1,6 +1,6 @@
-## Wetello test task
+## Wetelo test task
 
-This is test task created to Wetello called BookApp.
+This is test task created to Wetelo called BookApp.
 
 ## Start project in local machine
 

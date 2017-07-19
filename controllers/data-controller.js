@@ -1,5 +1,4 @@
 var Book = require('../models/book');
-var DIR = './uploads/';
 var ObjectID = require('mongodb').ObjectID;
 var jwt = require('jsonwebtoken');
 
@@ -43,10 +42,6 @@ module.exports.postBook = function (req,res) {
             res.status(200).send('Book added!');
         }
     })
-};
-
-module.exports.uploadBook = function (req, res) {
-
 };
 
 module.exports.deleteBook = function (req,res) {

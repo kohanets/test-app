@@ -2,7 +2,7 @@
 <div class="container">
 <h3>Books</h3>
   <div class="input-field col s6 right">
-    <input placeholder="Search" id="search" [(ngModel)]="tosearch" (keyup)="search()" type="text" class="validate">
+    <input placeholder="Search" id="search" [(ngModel)]="tosearch" (keyup)="search()" type="text">
   </div>
   <p class="col s12 right" style="margin:25px 10px 0 0"><label>{{searchMsg}}</label>   </p>
 <table>
@@ -43,14 +43,14 @@
     <td (click)="open(book)" class="pointer">{{book.author}}</td>
     <td (click)="open(book)" class="pointer">{{book.title}}</td>
     <td>
-      <rating (click)="updateRating(book)" [(ngModel)]="book.rating"
+      <rating (click)="updateRatingOrStatus(book)" [(ngModel)]="book.rating"
               [max]="5" [titles]="['one', 'two', 'three', 'four', 'five']">
       </rating>
     <td>
       <div class="switch">
         <label>
           Off
-          <input  [(ngModel)]="book.status" (change)="updateStatus(book)" type="checkbox">
+          <input  [(ngModel)]="book.status" (change)="updateRatingOrStatus(book)" type="checkbox">
           <span class="lever"></span>
           On
         </label>

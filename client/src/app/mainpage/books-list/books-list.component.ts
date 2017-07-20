@@ -16,8 +16,6 @@ export class BooksListComponent implements OnInit {
   tosearch: string;
   searchMsg :string;
 
-
-
   titleSortTriger: boolean ;
   authorSortTriger: boolean;
   statusSortTriger: boolean;
@@ -134,7 +132,7 @@ export class BooksListComponent implements OnInit {
   search(){
     this.searchResults = [];
     for(var i=0; i<this.copybooks.length; i++) {
-        if(this.copybooks[i].title.toLowerCase().indexOf(this.tosearch.toLowerCase())!=-1 || this.copybooks[i].author.toLowerCase().indexOf(this.tosearch.toLowerCase()) != -1) {
+        if(this.copybooks[i].title.toLowerCase().includes(this.tosearch.toLowerCase()) || this.copybooks[i].author.toLowerCase().includes(this.tosearch.toLowerCase())) {
           this.searchResults.push(this.copybooks[i]);
         }
       }
@@ -152,7 +150,7 @@ export class BooksListComponent implements OnInit {
     }
     }
 
-  updateRating(book){
+  updateRatingOrStatus(book){
     this.bookService.updateBook(book)
       .subscribe(res => {
         if(res.ok == false){
@@ -160,14 +158,4 @@ export class BooksListComponent implements OnInit {
         }
       });
   }
-
-  updateStatus(book){
-    this.bookService.updateBook(book)
-      .subscribe(res => {
-        if(res.ok == false){
-          alert('something wrong' + res);
-        }
-      });
-  }
-
 }
